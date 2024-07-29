@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+// compiler won't stop you from creating un-read package level variables
+var zzz int = 10
+
 func main() {
 	var i int = 10
 	i *= 2
@@ -48,5 +51,49 @@ func main() {
 	const y3 = 2
 	const z3 = x3 + y3
 	fmt.Println(z3)
+
+	// untyped constants
+	const x4 = 10
+	// x4 = 20 => won't compile
+	fmt.Println(x4)
+	// but it can be assigned to other type that share the same value assignment
+	var y4 int = x4
+	var y5 byte = x4
+	var y6 float64 = x4
+	fmt.Println(y4, y5, y6)
+
+	// typed constants && go won't stop you from making un-read constants
+	const x5 int = 10
+	// var y55 float64 = x5 => can't be assigned to float64 as (x5) is a typed int constant.
+
+	//Exercises
+	exercises()
+}
+
+func exercises() {
+	// 1. Write a program that declares an integer variable called i with the value 20. Assign i to a floating-point variable named f. Print out i and f.
+	var i int = 20
+	var f float64 = float64(i)
+	fmt.Println(i, f)
+
+	// 2. Write a program that declares a constant called value that can be assigned to both an integer and a floating-point variable. Assign it to an integer called i and a floating-point variable called f. Print out i and f.
+	const value = 10
+	i = value
+	f = value
+	fmt.Println(i, f)
+
+	// 3. Write a program with three variables, one named b of type byte, one named smallI of type int32, and one named bigI of type uint64. Assign each variable the maximum legal value for its type; then add 1 to each variable. Print out their values.
+	var b byte
+	var smallI int32
+	var bigI uint64
+
+	b = 255
+	smallI = 2_147_483_647
+	bigI = 18_446_744_073_709_551_615
+	fmt.Println(b, smallI, bigI)
+	b++
+	smallI++
+	bigI++
+	fmt.Println(b, smallI, bigI)
 
 }
