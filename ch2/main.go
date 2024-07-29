@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// compiler won't stop you from creating un-read package level variables
+// compiler won't stop you from creating un-read package level variables , however , as they are not used , they won't be included in the compiled binary
 var zzz int = 10
 
 func main() {
@@ -62,7 +62,7 @@ func main() {
 	var y6 float64 = x4
 	fmt.Println(y4, y5, y6)
 
-	// typed constants && go won't stop you from making un-read constants
+	// typed constants , go won't stop you from making un-read constants , however , as they are not used , they won't be included in the compiled binary
 	const x5 int = 10
 	// var y55 float64 = x5 => can't be assigned to float64 as (x5) is a typed int constant.
 
